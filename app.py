@@ -166,7 +166,7 @@ def handle_requests():
     uid = request.args.get("uid")
     server_name = request.args.get("server_name", "").upper()
     access_key = request.args.get("key")
-    SECRET_KEY = os.environ.get('ACCESS_KEY')
+    SECRET_KEY = "lkteam"
 
     if not SECRET_KEY or access_key != SECRET_KEY:
         return jsonify({"error": "Access denied. Invalid or missing key."}), 403
