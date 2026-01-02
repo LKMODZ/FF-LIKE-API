@@ -16,25 +16,16 @@ import random # <-- Yeh line add ki hai
 
 app = Flask(__name__)
 
-def load_tokens(server_name):
-    base_url = "https://raw.githubusercontent.com/TSun-FreeFire/TSun-FreeFire-Storage/refs/heads/main/Spam-api/"
-    server_map = {
-        "IND": "token_ind.json",
-        "PK": "token_pk.json",
-        "BR": "token_br.json",
-        "US": "token_br.json",
-        "SAC": "token_br.json",
-        "NA": "token_br.json",
-    }
-    token_file = server_map.get(server_name, "token_bd.json")
-    url = f"{base_url}{token_file}"
+def load_tokens(server_name=None):
+    url = "https://raw.githubusercontent.com/TSun-FreeFire/TSun-FreeFire-Storage/refs/heads/main/Spam-api/token_bd.json"
     try:
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
     except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
-        app.logger.error(f"Error fetching or decoding tokens for {server_name} from {url}: {e}")
+        app.logger.error(f"Error fetching or decoding tokens from {url}: {e}")
         return None
+
 
 def encrypt_message(plaintext):
     try:
