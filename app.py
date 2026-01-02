@@ -17,14 +17,14 @@ import random # <-- Yeh line add ki hai
 app = Flask(__name__)
 
 def load_tokens(server_name):
-    base_url = "https://raw.githubusercontent.com/SaeedX302/FF-Tokens/main/"
+    base_url = "https://raw.githubusercontent.com/TSun-FreeFire/TSun-FreeFire-Storage/refs/heads/main/Spam-api/"
     server_map = {
         "IND": "token_ind.json",
         "PK": "token_pk.json",
         "BR": "token_br.json",
         "US": "token_br.json",
         "SAC": "token_br.json",
-        "NA": "token_br.json",
+        "NA": "token_bd.json",
     }
     token_file = server_map.get(server_name, "token_bd.json")
     url = f"{base_url}{token_file}"
